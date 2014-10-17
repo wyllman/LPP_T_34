@@ -24,4 +24,5 @@ class TestNumComplejo < Test::Unit::TestCase
 			NumComplejo.new('a' , 'b')
 		end
 	end
+end
 
