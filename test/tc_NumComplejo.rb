@@ -38,7 +38,7 @@ class TestNumComplejo < Test::Unit::TestCase
 	def test_producto
 	#Comprobamos la multiplicacion con los valores de 'setup'
 	result = @n * @m
-	assert result.r == -8 and result.i == 10
+	assert result.r == -5 and result.i == 10
 	end
 	def test_producto_escalar
 	#Comprobamos el producto escalar de un complejo
