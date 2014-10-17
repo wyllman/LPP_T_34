@@ -1,7 +1,7 @@
 # Implementar en este fichero las Pruebas Unitarias asociadas a la clase NumComplejo
 
-require "./lib/NumComplejo.rb"
-require "test/unit"
+require 'lib/NumComplejo'
+require 'test/unit'
 
 class TestNumComplejo < Test::Unit::TestCase
 

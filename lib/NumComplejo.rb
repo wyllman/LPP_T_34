@@ -1,34 +1,38 @@
 class NumComplejo
-   attr_reader :real, :img
 
-   def initialize (nReal, nImg)
-      @real = nReal.to_f
-      @img  = nImg.to_f
+   attr_reader :r, :i
+
+   def initialize (r, i)
+      raise ArgumentError, "Argumento no numerico" unless r.is_a? Numeric
+      raise ArgumentError, "Argumento no numerico" unless i.is_a? Numeric
+     
+      @r = r
+      @i = i
    end
 
    def to_s
-      return "(#{real}, #{img})"
+      "(#{@r}+#{@i}i)"
    end
 
    def +(other)
-      if (other.instance_of? NumComplejo)
-         return NumComplejo.new (real + other.real, img + other.img)
-      elsif (other. instance_of Fixnum)
-         return NumComplejo.new (real + other, img)
+      if (other.is_a? NumComplejo)
+         return NumComplejo.new(@r + other.r, @i + other.i)
+      elsif (other.is_a? Numeric)
+         return NumComplejo.new(@r + other, @i)
       else
-         puts "Error, second argument isn't a valid number."
+         puts "Error, second argument isnt a valid number."
       end
    end 
 
    def -@
-      return NumComplejo.new (-real, img)
+      return NumComplejo.new(-@r, @i)
    end
 
    def *(other)
       if (other.instance_of? NumComplejo)
-         return NumComplejo.new (real * other.real - img * other.img,real * other.img + img * other.real)
+         return NumComplejo.new(@r * other.r - @i * other.i, @r * other.i + @i * other.r)
       elsif (other.instance_of? Fixnum)
-         return NumComplejo.new ( real * other, img * other)
+         return NumComplejo.new( @r * other, @i * other)
       else
          puts "Error, second argument isn't a valid number."
       end
@@ -36,11 +40,11 @@ class NumComplejo
 
    def /(other)
       if (other.instance_of? NumComplejo)
-         d = other.real * ohter.real + other.img * other.img
-         return NumComplejo.new ((real * other.real + img * other.img) / d,
-                                (img * other.real - real * other.img) / d)
+         d = other.r * other.r + other.i * other.i
+         return NumComplejo.new((@r * other.r + @i * other.i) / d,
+                                (@i * other.r - @r * other.i) / d)
       elsif (other.instance_of? Fixnum)
-         return NumComplejo.new (real / other, img / other)
+         return NumComplejo.new(@r / other, @i / other)
       else
          puts "Error, second argument isn't valid number."
       end
