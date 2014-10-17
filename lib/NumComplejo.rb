@@ -28,6 +28,16 @@ class NumComplejo
       return NumComplejo.new(-@r, @i)
    end
 
+   def -(other)
+      if (other.is_a? NumComplejo)
+         return NumComplejo.new(@r - other.r, @i - other.i)
+      elsif (other.is_a? Numeric)
+         return NumComplejo.new(@r - other, @i)
+      else
+         puts "Error, second argument isnt a valid number."
+      end
+   end 
+   
    def *(other)
       if (other.instance_of? NumComplejo)
          return NumComplejo.new(@r * other.r - @i * other.i, @r * other.i + @i * other.r)
